@@ -21,9 +21,9 @@ set.seed(22587)
 
 int <- raster("NOLA_intensity_5m.tif")
 hag <- raster("NOLA_HAG_5m.tif")
-ndvi <- raster("NOLA_NDVI_0725.tif")
-imp <- raster("NOLA_IMP.tif")
-naip <- brick("NOLA_RGBIR_0725.tif")
+ndvi <- raster("NOLA_NDVI_5m.tif")
+imp <- raster("NOLA_IMP_5m.tif")
+naip <- brick("NOLA_RGBIR_5m.tif")
 
 img <- addLayer(naip, ndvi, int, hag, imp)
 names(img) <- c(paste0("B",1:8,coll="")) #R,G,B,NIR,NDVI,Intensity,HAG,Impervious (binary)
@@ -92,4 +92,4 @@ plot(importance)
 
 classify <- predict(img,rf.train)
 
-classify.save <- writeRaster(classify,filename="NOLA_Classified_2017_221010.tif", format="GTiff", overwrite=TRUE)
+classify.save <- writeRaster(classify,filename="NOLA_Classified_2017_5m_221010.tif", format="GTiff", overwrite=TRUE)
