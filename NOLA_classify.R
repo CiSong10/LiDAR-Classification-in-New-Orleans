@@ -14,10 +14,15 @@ library(sf)
 
 set.seed(22587)
 
+## pre-processing
+# imp <- raster("NOLA_IMP.tif")
+# imp[is.na(imp[])] <- 0
+# writeRaster(imp,filename="NOLA_IMP.tif", format="GTiff", overwrite=TRUE)
+
 int <- raster("NOLA_intensity_5m.tif")
-hag <- raster("NOLA_HAG_5m_0906.tif")
+hag <- raster("NOLA_HAG_5m.tif")
 ndvi <- raster("NOLA_NDVI_0725.tif")
-imp <- raster("NOLA_IMP_0906.tif")
+imp <- raster("NOLA_IMP.tif")
 naip <- brick("NOLA_RGBIR_0725.tif")
 
 img <- addLayer(naip, ndvi, int, hag, imp)
